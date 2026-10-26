@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/style.css">
+    <title>Meals</title>
+</head>
+  
+    
+
+<body>
+
+<header class="site-header">
+
+        <!--navigation starts -->
+    <nav class="site-nav">
+        <a class="brand" href="/">
+            <img src="/poetry-food-logo.png" alt="logo for the Website. A bowl of food with the sites name in it">
+        <span>Poetry Food</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            <li><a href="/meals">View Meals</a></li>
+            <li><a href="/meals/new">Add Meals</a></li>
+        
+        </ul>
+    </nav>
+
+
+    <!-- On this page: 
+     My header, etc 
+     I need to be able to have all of the meals displayed. This is ejs and not html, so I don't need to use the DOM for everything here 
+     advice: -->
+    
+ <div class="container">
+<h1> My Meals </h1>
+    <% meals.forEach(function(meal) { %>
+    <div class="meal-card">    
+    <h2><%= meal.mealType %></strong></p>
+    <p><strong><%= meal.mealDate %></strong></p>
+    <p><strong><%= meal.mealAcquired %></strong></p>
+   <p> <strong><%= meal.mealIngredients %></strong></p>
+    <p><strong><%= meal.mealRating %></strong></p>
+    <p><strong><%= meal.mealPoem %></strong></p>
+    <div class="meal-actions">
+    <a href="/meals/<%= meal._id %>/edit"> Edit this meal</a>
+    <form action="/meals/<%= meal._id %>?_method=DELETE" method="POST"> 
+        <button type="submit">Delete this meal</button> 
+    </form>
+      <% }); %>
+     </div>
+
+   
+</body>
+</html>

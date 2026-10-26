@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/style.css">
+</head>
+    <title>Add a Meal</title>
+</head>
+<body>
+
+<header class="site-header">
+
+
+        <!--navigation starts -->
+    <nav class="site-nav">
+        <a class="brand" href="/">
+            <img src="/poetry-food-logo.png" alt="logo for the Website. A bowl of food with the sites name in it">
+        <span>Poetry Food</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            <li><a href="/meals">View Meals</a></li>
+            <li><a href="/meals/new">Add Meals</a></li>
+        
+        </ul>
+    </nav>
+
+    <!--make the form to add the meal
+        * different meal times: breakfast lunch dinner snack morning snack grazing emotional eating
+        * date: 
+        *where the user got/made the meal: home, ordered via app/delivery, went out to eat
+        *rating: 1 - 5 stars 
+        *place to list the ingredients 
+        *place to put the poem 
+        *submit button for the form 
+        
+        - where is all of this information going to go? To the /meals/new routes 
+            * what kind of CRUD operation is this? POST
+            
+        - the names in the form can not be the same because they are used by Express to see which values are being submitted. 
+        
+         write your poem here. This is an example:
+
+            "Upon my lips did I taste
+            but the sweetest essence of life
+            an apple red and firm 
+            Gala perhaps --
+            organic and true"
+        -->
+
+        
+
+    <!--choice form-->
+    <form action="/meals/new" method="POST">
+       <label for="mealType">What do you consider this meal?</label>
+       <select name="mealType" id="mealType" required>
+            <option value=""> Please choose an option</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+       </select>
+   <label for="mealDate">Date you ate this meal: 
+   <input type="date" name="mealDate" min="1946-01-01" max="2098-01-01" id="mealDate"required>
+    </label>
+    <label for="mealPoem" required>
+        <textarea id="mealPoem" name="mealPoem" rows="7" cols="100" placeholder=" write your poem here. This is an example:
+
+            Upon my lips did I taste
+            but the sweetest essence of life
+            an apple red and firm 
+            Gala perhaps --
+            organic and true">
+           
+        </textarea>
+    </label>
+
+    <label for="mealAcquired">Choose the type of meal:</label>
+       <select name="mealAcquired" id="mealAcquired" required>
+            <option value="homemade">Homemade</option>
+            <option value="ordered">Ordered for delivery</option>
+            <option value="outToEat">Ate out at a restaurant</option>
+       </select>
+
+    <label for="mealIngredients">List the main ingredients of the meal</label>
+       <input type="text" name="mealIngredients" id="mealIngredients" required>
+
+       <label for="mealRating">Rate your meal out of 5 stars</label>
+       <select name="mealRating" id="mealRating">
+            
+           
+            <option value="1">One Star</option>
+            <option value="2">Two Stars</option>
+            <option value="3">Three Stars</option>
+            <option value="4">Four Stars</option>
+            <option value="5">Five Stars</option>
+       </select>
+       <button class="button" type="submit">Add Meal</button>
+    </form> 
+</body>
+</html>

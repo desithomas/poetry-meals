@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/style.css">
+</head>
+    <title>Edit meals</title>
+</head>
+<body>
+<header class="site-header">
+
+        <!--navigation starts -->
+    <nav class="site-nav">
+        <a class="brand" href="/">
+            <img src="/poetry-food-logo.png" alt="logo for the Website. A bowl of food with the sites name in it">
+        <span>Poetry Food</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            <li><a href="/meals">View Meals</a></li>
+            <li><a href="/meals/new">Add Meals</a></li>
+        
+        </ul>
+    </nav>
+
+
+   
+
+    
+<!-- When editing, you need to give them the same form that they used to add the meals; they are editing the same form-->
+    <h3>Edit meals</h3>
+
+
+
+    <!-- This is the start of the edit form-->
+
+    <!--This is where the user makes edits to the form to change their answers-->
+    <form action="/meals/<%= meal._id %>?_method=PUT" method="POST">
+    <label for="mealType">Choose the type of meal:</label>
+       <select name="mealType" id="mealType" required>
+            <option value="breakfast"  <%= meal.mealType === 'breakfast' ? 'selected' : '' %>> Breakfast </option>
+            <option value="lunch" <%= meal.mealType === 'lunch' ? 'selected' : '' %>> Lunch </option>
+            <option value="dinner" <%= meal.mealType === 'dinner' ? 'selected' : '' %>> Dinner</option>
+            <option value="snack" <%= meal.mealType === 'snack' ? 'selected' : '' %>> Snack</option>
+       </select>
+
+        <label for="mealDate"> Date you ate this meal: </label>
+   <input type="date" name="mealDate" min="1946-01-01" max="2098-01-01" id="mealDate" value="<%= meal.mealDate.toISOString().slice(0, 10) %>" required>
+    </label>
+
+    <!-- Poem starts here-->
+    <label for="mealPoem" required>
+        <textarea id="mealPoem" name="mealPoem" rows="7" cols="100" placeholder=" write your poem here. This is an example:
+
+            Upon my lips did I taste
+            but the sweetest essence of life
+            an apple red and firm 
+            Gala perhaps --
+            organic and true">
+           <%= meal.mealPoem %>
+        </textarea>
+    </label>
+
+        <!-- meal type starts here -->
+    <label for="mealAcquired">Where did this meal come from? </label>
+       <select name="mealAcquired" id="mealAcquired" required>
+            <option value="homemade" <%= meal.mealAcquired === 'homemade' ? 'selected' : '' %>> Homemade </option>
+            <option value="ordered" <%= meal.mealAcquired === 'ordered' ? 'selected' : '' %>> Ordered for delivery</option>
+            <option value="outToEat" <%= meal.mealAcquired === 'outToEat' ? 'selected' : '' %>> Ate out at a restaurant</option>
+       </select>
+
+        <!-- meal ingredients starts here-->
+    <label for="mealIngredients">List the main ingredients of the meal</label>
+       <input type="text" name="mealIngredients" id="mealIngredients" value="<%= meal.mealIngredients %>" required>
+
+       <!-- meal ratings start here-->
+       <label for="mealRating">Rate your meal out of 5 stars</label>
+       <select name="mealRating" id="mealRating" required>
+            <option value="1" <%= meal.mealRating === 1 ? 'selected' : '' %>> One Star</option>
+            <option value="2" <%= meal.mealRating === 2 ? 'selected' : '' %>>Two Stars</option>
+            <option value="3" <%= meal.mealRating === 3 ? 'selected' : '' %>>Three Stars</option>
+            <option value="4" <%= meal.mealRating === 4 ? 'selected' : '' %>>Four Stars</option>
+            <option value="5" <%= meal.mealRating ===  5 ? 'selected' : '' %>>Five Stars</option>
+       </select>
+       <!-- button to submit is here-->
+       <button type="submit">Save Changes</button>
+    </form> 
+
+</body>
+</html>
