@@ -40,9 +40,7 @@ The application is intended for personal meal journaling and creative writing. I
 
 <img width="1086" height="341" alt="Screenshot 2026-10-30 at 11 34 51 AM" src="https://github.com/user-attachments/assets/7597e538-c03b-4bcb-ba03-f696ee9d05b1" /> 
 
-##Installation
-
-Installation
+## Installation
 Clone the repository and move into the project directory:
 
 git clone https://github.com/desithomas/poetry-meals.git
